@@ -1,33 +1,58 @@
-# Cams2csv
-A simple piece of software that will extract CAMS Mutual fund (India) PDF statement data on to a simple CSV file.
+# CAMS pdf to XIRR Calculator
 
-I’ve built this tool for my own personal use so lot of love and passion involved.  It's a fully Open Source project and comes with GPL3 License. I have no intention of collecting your data, I respect your privacy as much as mine.
+This Python script extracts mutual fund transaction data from password-protected CAMS PDF statements and calculates the XIRR (Extended Internal Rate of Return), both for the overall portfolio and individual funds.
 
-No malicious code what’s so ever, the code is hosted on GitHub so you can review yourself.    
+It parses transaction history and market values directly from the PDF, handles irregular cash flows, and provides a clear summary of investment performance.
 
-At this stage, I’m supporting both Windows & Linux and the packages can be downloaded from the below links.
+---
 
-- [Windows 10/11](https://github.com/SudheerNotes/cams2csv/releases/download/v1.4/Cams2CSV_v1.4_Windows11.zip)
-- [Ubuntu 24.4 and Its derivatives](https://github.com/SudheerNotes/cams2csv/releases/download/v1.4/Cams2CSV_Ubuntu_24.04_v1.4.zip)
+## Features
 
+- Works with CAMS-consolidated mutual fund statements (PDF)
+- Supports password-protected PDFs
+- Extracts transaction history and current market values
+- Calculates:
+  - Total portfolio XIRR
+  - Fund-wise XIRR
+- Outputs a readable summary to the terminal
 
-**Please note, this is a simple software hence I'm not accepting any PR's so if any issues please raise an issue I'll try to fix as soon as I can**
+---
 
+## Dependencies
+- pdfplumber
+- pandas
+- scipy
 
-## How to use
+---
+## Usage
+   First get a CAMS pdf from [Here](https://www.camsonline.com/Investors/Statements/Consolidated-Account-Statement).
+	python cams_xirr_calculator.py --pdf path/to/statement.pdf --password your_password
 
-The UI is very simple and self explanatory.
+---
 
-**Setp 0:** Request CAMS detailed (not summary) Mutual Fund statement from MyCams [link](https://www.camsonline.com/Investors/Statements/Consolidated-Account-Statement)
+## Example Output
 
-**Step 1:** Click on `Browse` button and select your CAMS PDF file.
+Total Market Value: INR 987,321.00  
+Total XIRR: 7.45%
 
-**Step 2:** If your PDF statement is password protected then enter your `Password` else go to step 3
+Fund-wise XIRR:
 
-**Step 3:** Click `Submit` button - that's it.
+           Fund_name              Market_value  XIRR (%)
+		Balanced Growth Fund        102345.67      5.32
+		Ultra Short Term Fund        48765.10      7.88
+		Equity Opportunities Fund   123456.78      3.47
+		Liquid Plus Fund             59876.32      9.12
+		Short Duration Debt Fund    278934.11      6.84
+		Money Market Fund           218765.50      7.30
+		Index Equity Fund           255178.52      8.05
 
-In couple of minutes a CSV file with the details will be saved in your `Downloads` folder. 
+---
 
-### Here is a simple UI of this tool
+## Disclaimer
 
-!['Simple UI'](/img/ui.png)
+This script is provided for educational and personal use only.
+
+Please verify the results independently. The script assumes a specific format used by CAMS in its PDF statements and may not work correctly if the structure of the PDF changes or differs.
+
+Use at your own risk. The author takes no responsibility for financial decisions made based on this tool.
+
